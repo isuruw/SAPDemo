@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="idocSendSeq" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log level="full">
+        <property name="property_name" value="*********************final IDOC*******************"/>
+    </log>
+    <property description="outonly" name="OUT_ONLY" scope="default" type="STRING" value="true"/>
+    <property description="Force_sc_accept" name="FORCE_SC_ACCEPT" scope="default" type="STRING" value="true"/>
+    <send>
+        <endpoint name="sapidocendpoint">
+            <address uri="idoc:/IGS.CPT"/>
+        </endpoint>
+    </send>
+</sequence>

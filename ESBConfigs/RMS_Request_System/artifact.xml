@@ -35,4 +35,22 @@
     <artifact name="Echo" groupId="com.example.RMS_Request_System.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/api/Echo.xml</file>
     </artifact>
+    <artifact name="SaleforceInboundEP" groupId="com.example.RMS_Request_System.inbound-endpoint" version="1.0.0" type="synapse/inbound-endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/inbound-endpoints/SaleforceInboundEP.xml</file>
+    </artifact>
+    <artifact name="reqSequence" groupId="com.example.RMS_Request_System.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/reqSequence.xml</file>
+    </artifact>
+    <artifact name="setPropertyValues" groupId="com.example.RMS_Request_System.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/setPropertyValues.xml</file>
+    </artifact>
+    <artifact name="idoccreateauto.xslt" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/local-entries/idoccreateauto.xslt.xml</file>
+    </artifact>
+    <artifact name="idocSendSeq" groupId="com.example.RMS_Request_System.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/idocSendSeq.xml</file>
+    </artifact>
+    <artifact name="SAP_To_SF_Proxy" groupId="com.example.RMS_Request_System.proxy-service" version="1.0.0" type="synapse/proxy-service" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/proxy-services/SAP_To_SF_Proxy.xml</file>
+    </artifact>
 </artifacts>

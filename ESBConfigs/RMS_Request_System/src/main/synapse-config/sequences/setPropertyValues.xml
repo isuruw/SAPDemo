@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="setPropertyValues" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <property description="order" expression="//sobject/orderID__c" name="order" scope="default" type="STRING"/>
+    <property description="orderItem" expression="//sobject/orderItem__c" name="orderItem" scope="default" type="STRING"/>
+    <property description="messageType" name="messageType" scope="axis2" type="STRING" value="application/xml"/>
+    <property description="requestXML" expression="$body/*" name="requestXML" scope="default" type="OM"/>
+</sequence>
