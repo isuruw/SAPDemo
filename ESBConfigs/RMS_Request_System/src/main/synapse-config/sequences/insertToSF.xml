@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="insertToSF" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <property name="APOS" scope="default" type="STRING" value="'"/>
+    <property expression="fn:concat('SELECT tourID__c , username__c FROM Request__c WHERE mission__c = ', syn:get-property('APOS'),syn:get-property('mission'),syn:get-property('APOS'),' AND organization__c =',syn:get-property('APOS'), syn:get-property('organizationID'),syn:get-property('APOS'),' AND queryType__c =', syn:get-property('APOS'),syn:get-property('queryType'),syn:get-property('APOS'), ' AND approved__c = ','0')" name="QUERY" scope="default" type="STRING"/>
+    <salesforce.query configKey="SFConfig">
+        <batchSize>1</batchSize>
+        <queryString>{$ctx:QUERY}</queryString>
+    </salesforce.query>
+    <log level="full">
+        <property name="status" value="***********************SF Query Result********************"/>
+    </log>
+    <filter description="" regex="0" source="//ns:result/ns:size" xmlns:ns="urn:partner.soap.sforce.com">
+        <then>
+            <payloadFactory description="buildCreateMSG" media-type="xml">
+                <format>
+                    <sfdc:sobjects type="Request__c" xmlns:sfdc="sfdc">
+                        <sfdc:sobject>
+                            <sfdc:Name>$5</sfdc:Name>
+                            <sfdc:organization__c>$1</sfdc:organization__c>
+                            <sfdc:username__c>$2</sfdc:username__c>
+                            <sfdc:queryType__c>$3</sfdc:queryType__c>
+                            <sfdc:mission__c>$4</sfdc:mission__c>
+                            <sfdc:tourID__c>$5</sfdc:tourID__c>
+                        </sfdc:sobject>
+                    </sfdc:sobjects>
+                </format>
+                <args>
+                    <arg evaluator="xml" expression="get-property('organizationID')"/>
+                    <arg evaluator="xml" expression="get-property('username')"/>
+                    <arg evaluator="xml" expression="get-property('queryType')"/>
+                    <arg evaluator="xml" expression="get-property('mission')"/>
+                    <arg evaluator="xml" expression="get-property('tourID')"/>
+                </args>
+            </payloadFactory>
+            <salesforce.create configKey="SFConfig">
+                <allOrNone>0</allOrNone>
+                <allowFieldTruncate>0</allowFieldTruncate>
+                <sobjects xmlns:sfdc="sfdc">{//sfdc:sobjects}</sobjects>
+            </salesforce.create>
+            <payloadFactory description="buildResponseMSG" media-type="xml">
+                <format>
+                    <responses xmlns="">
+                        <response>$1</response>
+                    </responses>
+                </format>
+                <args>
+                    <arg evaluator="xml" expression="$body/*"/>
+                </args>
+            </payloadFactory>
+        </then>
+        <else>
+            <log level="full"/>
+            <respond/>
+        </else>
+    </filter>
+</sequence>

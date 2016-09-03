@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="PropertySetSeq" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <property description="queryType" expression="//query/queryType" name="queryType" scope="default" type="STRING"/>
+    <property description="organizationID" expression="//organizationID" name="organizationID" scope="default" type="STRING"/>
+    <property description="username" expression="//username" name="username" scope="default" type="STRING"/>
+    <property description="mission" expression="//mission" name="mission" scope="default" type="STRING"/>
+    <property description="order" expression="//order" name="order" scope="default" type="STRING"/>
+    <property description="orderItem" expression="//orderItem" name="orderItem" scope="default" type="STRING"/>
+    <property description="messageType" name="messageType" scope="axis2" type="STRING" value="application/xml"/>
+    <property description="requestXML" expression="$body/*" name="requestXML" scope="default" type="OM"/>
+</sequence>

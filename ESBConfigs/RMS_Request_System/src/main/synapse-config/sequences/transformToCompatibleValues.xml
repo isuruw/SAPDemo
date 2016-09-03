@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="transformToCompatibleValues" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <switch source="//MISSION_ID">
+        <case regex="inspect_order_progress">
+            <enrich>
+                <source clone="true" type="inline">
+                    <MISSION_ID xmlns="">1</MISSION_ID>
+                </source>
+                <target xpath="//MISSION_ID"/>
+            </enrich>
+        </case>
+        <case regex="inspect_material_quality">
+            <enrich>
+                <source clone="true" type="inline">
+                    <MISSION_ID xmlns="">2</MISSION_ID>
+                </source>
+                <target xpath="//MISSION_ID"/>
+            </enrich>
+        </case>
+        <case regex="inspect_factory_standards">
+            <enrich>
+                <source clone="true" type="inline">
+                    <MISSION_ID xmlns="">3</MISSION_ID>
+                </source>
+                <target xpath="//MISSION_ID"/>
+            </enrich>
+        </case>
+        <case regex="finalize_order">
+            <enrich>
+                <source clone="true" type="inline">
+                    <MISSION_ID xmlns="">4</MISSION_ID>
+                </source>
+                <target xpath="//MISSION_ID"/>
+            </enrich>
+        </case>
+        <default>
+            <enrich>
+                <source clone="true" type="inline">
+                    <MISSION_ID xmlns="">0</MISSION_ID>
+                </source>
+                <target xpath="//MISSION_ID"/>
+            </enrich>
+        </default>
+    </switch>
+</sequence>

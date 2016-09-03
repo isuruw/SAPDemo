@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<localEntry key="SFConfig" xmlns="http://ws.apache.org/ns/synapse">
+    <salesforce.init>
+        <username>nuwanp@wso2.com</username>
+        <password>sapdemo@wso2.comzK0gdr1BDAoMbwbRe5sMafg0</password>
+        <loginUrl>https://login.salesforce.com/services/Soap/u/29.0</loginUrl>
+        <forceLogin/>
+        <blocking/>
+    </salesforce.init>
+</localEntry>

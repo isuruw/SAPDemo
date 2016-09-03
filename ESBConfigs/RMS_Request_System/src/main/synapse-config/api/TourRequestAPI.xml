@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/rms/request" name="TourRequestAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST GET" url-mapping="/create">
+        <inSequence>
+            <sequence key="PropertySetSeq"/>
+            <payloadFactory description="requestCountMessage" media-type="xml">
+                <format>
+                    <p:mongo_count xmlns:p="http://ws.wso2.org/dataservice"/>
+                </format>
+                <args/>
+            </payloadFactory>
+            <call>
+                <endpoint key="DSEndpoint"/>
+            </call>
+            <property description="tourIDOM" expression="//ns:Document" name="tourIDOM" scope="default" type="OM" xmlns:ns="http://ws.wso2.org/dataservice"/>
+            <property description="tourID" expression="//ns:Data" name="tourID" scope="default" type="INTEGER" xmlns:ns="http://ws.wso2.org/dataservice"/>
+            <log description="log properties" level="full">
+                <property expression="get-property('tourID')" name="**************************tourID**************************"/>
+                <property expression="get-property('queryType')" name="**************************queryType**************************"/>
+                <property expression="get-property('organizationID')" name="**************************organizationID**************************"/>
+                <property expression="get-property('username')" name="**************************username**************************"/>
+                <property expression="get-property('order')" name="**************************order**************************"/>
+                <property expression="get-property('mission')" name="**************************mission**************************"/>
+                <property expression="get-property('orderItem')" name="**************************orderItem**************************"/>
+            </log>
+            <sequence key="insertToSF"/>
+            <clone id="111" sequential="true">
+                <target>
+                    <sequence>
+                        <sequence key="updateDB"/>
+                    </sequence>
+                </target>
+                <target>
+                    <sequence>
+                        <sequence key="sendIdoc"/>
+                    </sequence>
+                </target>
+            </clone>
+        </inSequence>
+        <outSequence>
+            <log level="full">
+                <property name="property_name" value="*****************out seq***********"/>
+            </log>
+            <aggregate id="333">
+                <completeCondition>
+                    <messageCount max="1" min="-1"/>
+                </completeCondition>
+                <onComplete enclosingElementProperty="responses" expression="$body">
+                    <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+                    <send/>
+                </onComplete>
+            </aggregate>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>

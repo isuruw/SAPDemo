@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="TourRequestAPI" groupId="com.example.RMS_Request_System.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/TourRequestAPI.xml</file>
+    </artifact>
+    <artifact name="DSEndpoint" groupId="com.example.RMS_Request_System.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/DSEndpoint.xml</file>
+    </artifact>
+    <artifact name="PropertySetSeq" groupId="com.example.RMS_Request_System.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/PropertySetSeq.xml</file>
+    </artifact>
+    <artifact name="insertToSF" groupId="com.example.RMS_Request_System.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/insertToSF.xml</file>
+    </artifact>
+    <artifact name="updateDB" groupId="com.example.RMS_Request_System.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/updateDB.xml</file>
+    </artifact>
+    <artifact name="sendIdoc" groupId="com.example.RMS_Request_System.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/sendIdoc.xml</file>
+    </artifact>
+    <artifact name="idoccreate.xslt" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/local-entries/idoccreate.xslt.xml</file>
+    </artifact>
+    <artifact name="SFConfig" version="1.0.0" type="synapse/local-entry" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/local-entries/SFConfig.xml</file>
+    </artifact>
+    <artifact name="transformToCompatibleValues" groupId="com.example.RMS_Request_System.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/transformToCompatibleValues.xml</file>
+    </artifact>
+    <artifact name="idocTransmitSeq" groupId="com.example.RMS_Request_System.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/idocTransmitSeq.xml</file>
+    </artifact>
+    <artifact name="echoReq" groupId="com.example.RMS_Request_System.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/echoReq.xml</file>
+    </artifact>
+    <artifact name="Echo" groupId="com.example.RMS_Request_System.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/Echo.xml</file>
+    </artifact>
+</artifacts>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<localEntry key="idoccreate.xslt" xmlns="http://ws.apache.org/ns/synapse">
+    <xsl:stylesheet exclude-result-prefixes="xst" version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xst="http://ws.wso2.org/dataservice">
+        <xsl:template match="/">
+            <_-DSD_-ROUTEACCOUNT_CORDER002 xmlns="">
+                <IDOC BEGIN="1">
+                    <EDI_DC40 SEGMENT="1">
+                        <TABNAM>EDI_DC40</TABNAM>
+                        <MANDT>405</MANDT>
+                        <DOCREL>700</DOCREL>
+                        <STATUS>30</STATUS>
+                        <DIRECT>1</DIRECT>
+                        <OUTMOD>2</OUTMOD>
+                        <IDOCTYP>/DSD/ROUTEACCOUNT_CORDER002</IDOCTYP>
+                        <MESTYP>/DSD/ROUTEACCOUNT_CORDER0</MESTYP>
+                        <STDMES>/DSD/R</STDMES>
+                        <SNDPOR>SAPCCR</SNDPOR>
+                        <SNDPRT>LS</SNDPRT>
+                        <SNDPRN>WSO2ESB</SNDPRN>
+                        <RCVPOR>SAP_GW_IDO</RCVPOR>
+                        <RCVPRT>LS</RCVPRT>
+                        <RCVPRN>WSO2ESB</RCVPRN>
+                        <CREDAT>20120516</CREDAT>
+                        <CRETIM>132507</CRETIM>
+                    </EDI_DC40>
+                    <_-DSD_-E1BPRAGENERALHD SEGMENT="1">
+                        <TOUR_ID>
+                            <xsl:value-of select="//xst:Document/xst:Data"/>
+                        </TOUR_ID>
+                        <MISSION_ID>
+                            <xsl:value-of select="//query/mission"/>
+                        </MISSION_ID>
+                    </_-DSD_-E1BPRAGENERALHD>
+                    <_-DSD_-E1BPRAORDERHD2 SEGMENT="1">
+                        <VISIT_ID>0</VISIT_ID>
+                        <HH_ORDER>
+                            <xsl:value-of select="//jsonObject/order"/>
+                        </HH_ORDER>
+                        <ORDER_TIMESTAMP>
+                            <xsl:value-of select="//responses/xst:Documents[1]/xst:timestamp"/>
+                        </ORDER_TIMESTAMP>
+                        <ORDER_TIMEZONE>
+                            <xsl:value-of select="//responses/xst:Documents[1]/xst:timezone"/>
+                        </ORDER_TIMEZONE>
+                        <REASON>
+                            <xsl:value-of select="//responses/xst:Documents[2]/xst:reason"/>
+                        </REASON>
+                        <PO_NUM>1</PO_NUM>
+                        <ORD_TIMESTAMP>
+                            <xsl:value-of select="//responses/xst:Documents[1]/xst:order_ordTimeStamp"/>
+                        </ORD_TIMESTAMP>
+                        <ORD_TIMEZONE>
+                            <xsl:value-of select="//responses/xst:Documents[1]/xst:order_ordTimeZone"/>
+                        </ORD_TIMEZONE>
+                    </_-DSD_-E1BPRAORDERHD2>
+                    <_-DSD_-E1BPRAORDERITM2 SEGMENT="1">
+                        <VISIT_ID>0</VISIT_ID>
+                        <HH_ORDER>
+                            <xsl:value-of select="//jsonObject/order"/>
+                        </HH_ORDER>
+                        <HH_ORDER_ITM>
+                            <xsl:value-of select="//jsonObject/orderItem"/>
+                        </HH_ORDER_ITM>
+                        <MATERIAL>
+                            <xsl:value-of select="//responses/xst:Documents[2]/xst:material"/>
+                        </MATERIAL>
+                        <QUANTITY>
+                            <xsl:value-of select="//responses/xst:Documents[2]/xst:quantity"/>
+                        </QUANTITY>
+                        <UOM>
+                            <xsl:value-of select="//responses/xst:Documents[2]/xst:uomiso"/>
+                        </UOM>
+                        <TA_CODE>
+                            <xsl:value-of select="//responses/xst:Documents[2]/xst:tacode"/>
+                        </TA_CODE>
+                        <REASON>
+                            <xsl:value-of select="//responses/xst:Documents[2]/xst:reason"/>
+                        </REASON>
+                        <ORD_TIMESTAMP>
+                            <xsl:value-of select="//responses/xst:Documents[2]/xst:ordTimeZone"/>
+                        </ORD_TIMESTAMP>
+                        <ORD_TIMEZONE>
+                            <xsl:value-of select="//responses/xst:Documents[2]/xst:ordTimeZone"/>
+                        </ORD_TIMEZONE>
+                        <SPEC_RETURN>0</SPEC_RETURN>
+                    </_-DSD_-E1BPRAORDERITM2>
+                    <_-DSD_-E1BPRAORDERCOND2 SEGMENT="1">
+                        <VISIT_ID>0</VISIT_ID>
+                        <HH_ORDER>
+                            <xsl:value-of select="//jsonObject/order"/>
+                        </HH_ORDER>
+                        <HH_ORDER_ITM>
+                            <xsl:value-of select="//jsonObject/orderItem"/>
+                        </HH_ORDER_ITM>
+                        <COND_TYPE>
+                            <xsl:value-of select="//responses/xst:Documents[2]/xst:condtype"/>
+                        </COND_TYPE>
+                        <AMOUNT>
+                            <xsl:value-of select="//responses/xst:Documents[2]/xst:amount"/>
+                        </AMOUNT>
+                        <CURRENCY>
+                            <xsl:value-of select="//responses/xst:Documents[2]/xst:currency"/>
+                        </CURRENCY>
+                        <CURR_ISO>
+                            <xsl:value-of select="//responses/xst:Documents[2]/xst:curriso"/>
+                        </CURR_ISO>
+                    </_-DSD_-E1BPRAORDERCOND2>
+                    <E1BPPAREX SEGMENT="1">
+                        <STRUCTURE>0</STRUCTURE>
+                        <VALUEPART1>
+                            <xsl:value-of select="//responses/xst:Documents[1]/xst:order_ordTimeStamp"/>
+                        </VALUEPART1>
+                        <VALUEPART2>
+                            <xsl:value-of select="//responses/xst:Documents[1]/xst:order_ordTimeZone"/>
+                        </VALUEPART2>
+                        <VALUEPART3>
+                            <xsl:value-of select="//responses/xst:Documents[2]/xst:amount"/>
+                        </VALUEPART3>
+                        <VALUEPART4>
+                            <xsl:value-of select="//responses/xst:Documents[2]/xst:currency"/>
+                        </VALUEPART4>
+                    </E1BPPAREX>
+                </IDOC>
+            </_-DSD_-ROUTEACCOUNT_CORDER002>
+        </xsl:template>
+    </xsl:stylesheet>
+</localEntry>

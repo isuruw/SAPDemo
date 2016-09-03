@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="sendIdoc" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <clone id="222" sequential="true">
+        <target>
+            <sequence>
+                <payloadFactory description="getOrderInfoMSG" media-type="xml">
+                    <format>
+                        <p:mongo_ordersfind_byid xmlns:p="http://ws.wso2.org/dataservice">
+                            <xs:id xmlns:xs="http://ws.wso2.org/dataservice">$1</xs:id>
+                        </p:mongo_ordersfind_byid>
+                    </format>
+                    <args>
+                        <arg evaluator="xml" expression="get-property('order')"/>
+                    </args>
+                </payloadFactory>
+                <call>
+                    <endpoint key="DSEndpoint"/>
+                </call>
+            </sequence>
+        </target>
+        <target>
+            <sequence>
+                <payloadFactory description="getOrderItemMSG" media-type="xml">
+                    <format>
+                        <p:mongo_orderItemsfind_byid xmlns:p="http://ws.wso2.org/dataservice">
+                            <xs:id xmlns:xs="http://ws.wso2.org/dataservice">$1</xs:id>
+                        </p:mongo_orderItemsfind_byid>
+                    </format>
+                    <args>
+                        <arg evaluator="xml" expression="get-property('orderItem')"/>
+                    </args>
+                </payloadFactory>
+                <call>
+                    <endpoint key="DSEndpoint"/>
+                </call>
+            </sequence>
+        </target>
+    </clone>
+    <filter xmlns:ns="http://ws.wso2.org/dataservice" xpath="//ns:Documents/ns:Documents">
+        <then>
+            <property name="responses" scope="default">
+                <responses xmlns=""/>
+            </property>
+            <aggregate id="222">
+                <completeCondition>
+                    <messageCount max="-1" min="-1"/>
+                </completeCondition>
+                <onComplete expression="//ns:Documents/ns:Documents">
+                    <enrich>
+                        <source clone="true" property="requestXML" type="property"/>
+                        <target action="child" type="body"/>
+                    </enrich>
+                    <enrich>
+                        <source clone="true" property="tourIDOM" type="property"/>
+                        <target action="child" type="body"/>
+                    </enrich>
+                    <xslt key="idoccreate.xslt"/>
+                    <sequence key="transformToCompatibleValues"/>
+                    <clone id="333" sequential="true">
+                        <target>
+                            <sequence>
+                                <payloadFactory media-type="xml">
+                                    <format>
+                                        <response xmlns="">
+                                            <status>success</status>
+                                        </response>
+                                    </format>
+                                    <args/>
+                                </payloadFactory>
+                                <send>
+                                    <endpoint key="echoReq"/>
+                                </send>
+                            </sequence>
+                        </target>
+                        <target>
+                            <sequence>
+                                <sequence key="idocTransmitSeq"/>
+                            </sequence>
+                        </target>
+                    </clone>
+                </onComplete>
+            </aggregate>
+        </then>
+        <else>
+            <payloadFactory media-type="xml">
+                <format>
+                    <Error xmlns="">order id or order item not fount</Error>
+                </format>
+                <args/>
+            </payloadFactory>
+            <respond/>
+        </else>
+    </filter>
+</sequence>

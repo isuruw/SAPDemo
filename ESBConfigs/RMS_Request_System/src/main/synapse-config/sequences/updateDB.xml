@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="updateDB" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <payloadFactory description="insertRequestMsgToDB" media-type="xml">
+        <format>
+            <p:mongo_insert xmlns:p="http://ws.wso2.org/dataservice">
+                <xs:tourid xmlns:xs="http://ws.wso2.org/dataservice">$1</xs:tourid>
+                <xs:username xmlns:xs="http://ws.wso2.org/dataservice">$2</xs:username>
+                <xs:organization xmlns:xs="http://ws.wso2.org/dataservice">$3</xs:organization>
+                <xs:queryType xmlns:xs="http://ws.wso2.org/dataservice">$4</xs:queryType>
+                <xs:mission xmlns:xs="http://ws.wso2.org/dataservice">$5</xs:mission>
+                <xs:order xmlns:xs="http://ws.wso2.org/dataservice">$6</xs:order>
+                <xs:orderItem xmlns:xs="http://ws.wso2.org/dataservice">$7</xs:orderItem>
+            </p:mongo_insert>
+        </format>
+        <args>
+            <arg evaluator="xml" expression="get-property('tourID')"/>
+            <arg evaluator="xml" expression="get-property('username')"/>
+            <arg evaluator="xml" expression="get-property('organizationID')"/>
+            <arg evaluator="xml" expression="get-property('queryType')"/>
+            <arg evaluator="xml" expression="get-property('mission')"/>
+            <arg evaluator="xml" expression="get-property('order')"/>
+            <arg evaluator="xml" expression="get-property('orderItem')"/>
+        </args>
+    </payloadFactory>
+    <call>
+        <endpoint key="DSEndpoint"/>
+    </call>
+    <payloadFactory media-type="xml">
+        <format>
+            <responses xmlns="">
+                <response>
+                    <mongoDBResponse>$1</mongoDBResponse>
+                </response>
+            </responses>
+        </format>
+        <args>
+            <arg evaluator="xml" expression="$body/*[1]"/>
+        </args>
+    </payloadFactory>
+</sequence>
