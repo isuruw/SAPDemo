@@ -1,0 +1,17 @@
+jco.client.client=800
+jco.client.user=wso2_user
+jco.client.passwd=wso2pass2016
+jco.client.lang=en
+jco.client.ashost=/H/217.116.29.154/S/3299/H/192.168.60.120/S/3200
+jco.client.gwserv=3300
+jco.client.sysnr=00
+jco.client.idle_timeout=7200
+jco.client.logon=0
+jco.client.msserv=3600
+jco.client.trace=0
+jco.client.getsso2=0
+jco.client.r3name=CPT
+
+sap.client.RCVPOR=ZWSO2ISR
+sap.client.RCVPRT=LS
+sap.client.RCVPRN=SAP

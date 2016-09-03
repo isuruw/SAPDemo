@@ -1,0 +1,8 @@
+jco.server.gwhost=/H/217.116.29.154/S/3299/H/192.168.60.120/S/3200
+jco.server.gwserv=3300
+jco.server.progid=IGS.CPT
+jco.server.repository_destination=IGS.CPT
+jco.server.name=IGS.CPT
+jco.server.connection_count=1
+jco.server.trace=0
+jco.server.unicode=1
