@@ -1,0 +1,16 @@
+<body>
+   <p:mongo_ordersinsert xmlns:p="http://ws.wso2.org/dataservice">
+      <!--Exactly 1 occurrence-->
+      <xs:id xmlns:xs="http://ws.wso2.org/dataservice">0</xs:id>
+      <!--Exactly 1 occurrence-->
+      <xs:timestamp xmlns:xs="http://ws.wso2.org/dataservice">20160902T1130</xs:timestamp>
+      <!--Exactly 1 occurrence-->
+      <xs:timezone xmlns:xs="http://ws.wso2.org/dataservice">IST</xs:timezone>
+      <!--Exactly 1 occurrence-->
+      <xs:reason xmlns:xs="http://ws.wso2.org/dataservice">1</xs:reason>
+      <!--Exactly 1 occurrence-->
+      <xs:ordTimeStamp xmlns:xs="http://ws.wso2.org/dataservice">20170902T1130</xs:ordTimeStamp>
+      <!--Exactly 1 occurrence-->
+      <xs:ordTimeZone xmlns:xs="http://ws.wso2.org/dataservice">IST</xs:ordTimeZone>
+   </p:mongo_ordersinsert>
+</body>
