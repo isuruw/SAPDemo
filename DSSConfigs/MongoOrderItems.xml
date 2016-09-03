@@ -1,0 +1,297 @@
+<data name="MongoOrderItems" transports="http https local">
+   <config enableOData="false" id="mongo_ds">
+      <property name="mongoDB_servers">localhost</property>
+      <property name="mongoDB_database">mydb</property>
+   </config>
+   <config enableOData="false" id="mongo_orders">
+      <property name="mongoDB_servers">127.0.0.1</property>
+      <property name="mongoDB_database">orders</property>
+   </config>
+   <config enableOData="false" id="mongo_orderItems">
+      <property name="mongoDB_servers">localhost</property>
+      <property name="mongoDB_database">orderItems</property>
+   </config>
+   <query id="mongo_find" useConfig="mongo_ds">
+      <expression>things.find()</expression>
+      <result element="Documents" rowName="Document">
+         <element column="document" name="Data" xsdType="string"/>
+      </result>
+   </query>
+   <query id="mongo_count" useConfig="mongo_ds">
+      <expression>things.count()</expression>
+      <result element="Documents" rowName="Document">
+         <element column="document" name="Data" xsdType="string"/>
+      </result>
+   </query>
+   <query id="mongo_insert" useConfig="mongo_ds">
+      <expression>things.insert("{tourid:#, username:#, organization:#, querytype:#,mission:#,order:#, orderitem:#}")</expression>
+      <param name="tourid" sqlType="INTEGER"/>
+      <param name="username" sqlType="STRING"/>
+      <param name="organization" sqlType="STRING"/>
+      <param name="queryType" sqlType="STRING"/>
+      <param name="mission" sqlType="STRING"/>
+      <param name="order" sqlType="INTEGER"/>
+      <param name="orderItem" sqlType="INTEGER"/>
+   </query>
+   <query id="mongo_insert_doc" useConfig="mongo_ds">
+      <expression>things.insert("#")</expression>
+      <param name="doc" sqlType="STRING"/>
+   </query>
+   <query id="mongo_remove" useConfig="mongo_ds">
+      <expression>things.remove("{id:#}")</expression>
+      <param name="id" sqlType="STRING"/>
+   </query>
+   <query id="mongo_update" useConfig="mongo_ds">
+      <expression>things.update({name:'Bob'}, {name:'Zack', id: #}}, true)</expression>
+      <param name="id" sqlType="STRING"/>
+   </query>
+   <query id="mongo_drop" useConfig="mongo_ds">
+      <expression>things.drop()</expression>
+   </query>
+   <query id="mongo_ordersfind" useConfig="mongo_orders">
+      <expression>things.find()</expression>
+      <result element="Documents" rowName="Document">
+         <element column="document" name="Data" xsdType="string"/>
+      </result>
+   </query>
+   <query id="mongo_orderscount" useConfig="mongo_orders">
+      <expression>things.count()</expression>
+      <result element="Documents" rowName="Document">
+         <element column="document" name="Data" xsdType="string"/>
+      </result>
+   </query>
+   <query id="mongo_ordersinsert" useConfig="mongo_orders">
+      <expression>things.insert("{id:#, timestamp:# ,timezone:#, reason:#, ordtimestamp:#, ordtimezone:#}")</expression>
+      <param name="id" sqlType="STRING">
+         <validateLength maximum="35" minimum="0"/>
+      </param>
+      <param defaultValue="19700101T0000" name="timestamp" sqlType="STRING" structType="[object HTMLInputElement]">
+         <validateLength maximum="15" minimum="0"/>
+      </param>
+      <param name="timezone" sqlType="STRING"/>
+      <param name="reason" sqlType="STRING"/>
+      <param name="ordTimeStamp" sqlType="STRING"/>
+      <param name="ordTimeZone" sqlType="STRING"/>
+   </query>
+   <query id="mongo_ordersinsert_doc" useConfig="mongo_orders">
+      <expression>things.insert("#")</expression>
+      <param name="doc" sqlType="STRING"/>
+   </query>
+   <query id="mongo_ordersremove" useConfig="mongo_orders">
+      <expression>things.remove("{id:#}")</expression>
+      <param name="id" sqlType="STRING"/>
+   </query>
+   <query id="mongo_ordersupdate" useConfig="mongo_orders">
+      <expression>things.update({name:'Bob'}, {name:'Zack', id: #}}, true)</expression>
+      <param name="id" sqlType="STRING"/>
+   </query>
+   <query id="mongo_ordersdrop" useConfig="mongo_orders">
+      <expression>things.drop()</expression>
+   </query>
+   <query id="mongo_ordersfind_byid" useConfig="mongo_orders">
+      <expression>things.find({id:#})</expression>
+      <result element="Documents" rowName="Documents">
+         <element column="document.id" name="orderid" xsdType="integer"/>
+         <element column="document.timestamp" name="timestamp" xsdType="string"/>
+         <element column="document.timezone" name="timezone" xsdType="string"/>
+         <element column="document.ordTimeStamp" name="order_ordTimeStamp" xsdType="string"/>
+         <element column="document.ordTimeZone" name="order_ordTimeZone" xsdType="string"/>
+      </result>
+      <param name="id" sqlType="STRING"/>
+   </query>
+   <query id="mongo_orderItemsfind" useConfig="mongo_orderItems">
+      <expression>things.find()</expression>
+      <result element="Documents" rowName="Document">
+         <element column="document" name="Data" xsdType="string"/>
+      </result>
+   </query>
+   <query id="mongo_orderItemscount" useConfig="mongo_orderItems">
+      <expression>things.count()</expression>
+      <result element="Documents" rowName="Document">
+         <element column="document" name="Data" xsdType="string"/>
+      </result>
+   </query>
+   <query id="mongo_orderItemsinsert" useConfig="mongo_orderItems">
+      <expression>things.insert("{id:#, orderid:# ,quantity:#, uomiso:#, tacode:#, material:#,condtype:#,amount:#,currency:#,curriso:#,reason:#,ordtimestamp:#,ordtimezone:#}")</expression>
+      <param name="id" sqlType="STRING"/>
+      <param name="orderid" sqlType="STRING"/>
+      <param name="quantity" sqlType="STRING"/>
+      <param name="uomiso" sqlType="STRING"/>
+      <param name="tacode" sqlType="STRING"/>
+      <param name="material" sqlType="STRING"/>
+      <param name="condtype" sqlType="STRING"/>
+      <param name="amount" sqlType="STRING"/>
+      <param name="currency" sqlType="STRING"/>
+      <param name="curriso" sqlType="STRING"/>
+      <param name="reason" sqlType="STRING"/>
+      <param name="ordTimeStamp" sqlType="STRING"/>
+      <param name="ordTimeZone" sqlType="STRING"/>
+   </query>
+   <query id="mongo_orderItemsinsert_doc" useConfig="mongo_orderItems">
+      <expression>things.insert("#")</expression>
+      <param name="doc" sqlType="STRING"/>
+   </query>
+   <query id="mongo_orderItemsremove" useConfig="mongo_orderItems">
+      <expression>things.remove("{id:#}")</expression>
+      <param name="id" sqlType="STRING"/>
+   </query>
+   <query id="mongo_orderItemsupdate" useConfig="mongo_orderItems">
+      <expression>things.update({name:'Bob'}, {name:'Zack', id: #}}, true)</expression>
+      <param name="id" sqlType="STRING"/>
+   </query>
+   <query id="mongo_orderItemsdrop" useConfig="mongo_orderItems">
+      <expression>things.drop()</expression>
+   </query>
+   <query id="mongo_orderItemsfind_byid" useConfig="mongo_orderItems">
+      <expression>things.find({id:#})</expression>
+      <result element="Documents" rowName="Documents">
+         <element column="document.id" name="orderItemID" xsdType="integer"/>
+         <element column="document.orderid" name="orderid" xsdType="integer"/>
+         <element column="document.quantity" name="quantity" xsdType="string"/>
+         <element column="document.uomiso" name="uomiso" xsdType="string"/>
+         <element column="document.tacode" name="tacode" xsdType="integer"/>
+         <element column="document.reason" name="reason" xsdType="string"/>
+         <element column="document.ordTimeStamp" name="ordTimeStamp" xsdType="string"/>
+         <element column="document.ordTimeZone" name="ordTimeZone" xsdType="string"/>
+         <element column="document.material" name="material" xsdType="string"/>
+         <element column="document.condtype" name="condtype" xsdType="string"/>
+         <element column="document.amount" name="amount" xsdType="string"/>
+         <element column="document.currency" name="currency" xsdType="string"/>
+         <element column="document.curriso" name="curriso" xsdType="string"/>
+      </result>
+      <param name="id" sqlType="STRING"/>
+   </query>
+   <query id="mongo_orderItemsfind_byOrderid" useConfig="mongo_orderItems">
+      <expression>things.find({orderid:#})</expression>
+      <result element="Documents" rowName="Documents">
+         <element column="document" name="Data" xsdType="string"/>
+      </result>
+      <param name="orderid" sqlType="STRING"/>
+   </query>
+   <operation name="mongo_find">
+      <call-query href="mongo_find"/>
+   </operation>
+   <operation name="mongo_count">
+      <call-query href="mongo_count"/>
+   </operation>
+   <operation name="mongo_insert_doc" returnRequestStatus="true">
+      <call-query href="mongo_insert_doc">
+         <with-param name="doc" query-param="doc"/>
+      </call-query>
+   </operation>
+   <operation name="mongo_remove">
+      <call-query href="mongo_remove">
+         <with-param name="id" query-param="id"/>
+      </call-query>
+   </operation>
+   <operation name="mongo_update">
+      <call-query href="mongo_update">
+         <with-param name="id" query-param="id"/>
+      </call-query>
+   </operation>
+   <operation name="mongo_drop">
+      <call-query href="mongo_drop"/>
+   </operation>
+   <operation name="mongo_ordersfind">
+      <call-query href="mongo_ordersfind"/>
+   </operation>
+   <operation name="mongo_orderscount">
+      <call-query href="mongo_orderscount"/>
+   </operation>
+   <operation name="mongo_ordersinsert">
+      <call-query href="mongo_ordersinsert">
+         <with-param name="id" query-param="id"/>
+         <with-param name="timestamp" query-param="timestamp"/>
+         <with-param name="timezone" query-param="timezone"/>
+         <with-param name="reason" query-param="reason"/>
+         <with-param name="ordTimeStamp" query-param="ordTimeStamp"/>
+         <with-param name="ordTimeZone" query-param="ordTimeZone"/>
+      </call-query>
+   </operation>
+   <operation name="mongo_ordersinsert_doc" returnRequestStatus="true">
+      <call-query href="mongo_ordersinsert_doc">
+         <with-param name="doc" query-param="doc"/>
+      </call-query>
+   </operation>
+   <operation name="mongo_ordersremove">
+      <call-query href="mongo_ordersremove">
+         <with-param name="id" query-param="id"/>
+      </call-query>
+   </operation>
+   <operation name="mongo_ordersupdate">
+      <call-query href="mongo_ordersupdate">
+         <with-param name="id" query-param="id"/>
+      </call-query>
+   </operation>
+   <operation name="mongo_ordersdrop">
+      <call-query href="mongo_ordersdrop"/>
+   </operation>
+   <operation name="mongo_ordersfind_byid" returnRequestStatus="true">
+      <call-query href="mongo_ordersfind_byid">
+         <with-param name="id" query-param="id"/>
+      </call-query>
+   </operation>
+   <operation name="mongo_orderItemsfind">
+      <call-query href="mongo_orderItemsfind"/>
+   </operation>
+   <operation name="mongo_orderItemscount">
+      <call-query href="mongo_orderItemscount"/>
+   </operation>
+   <operation name="mongo_orderItemsinsert">
+      <call-query href="mongo_orderItemsinsert">
+         <with-param name="id" query-param="id"/>
+         <with-param name="orderid" query-param="orderid"/>
+         <with-param name="quantity" query-param="quantity"/>
+         <with-param name="reason" query-param="reason"/>
+         <with-param name="ordTimeStamp" query-param="ordTimeStamp"/>
+         <with-param name="ordTimeZone" query-param="ordTimeZone"/>
+         <with-param name="uomiso" query-param="uomiso"/>
+         <with-param name="tacode" query-param="tacode"/>
+         <with-param name="material" query-param="material"/>
+         <with-param name="condtype" query-param="condtype"/>
+         <with-param name="amount" query-param="amount"/>
+         <with-param name="currency" query-param="currency"/>
+         <with-param name="curriso" query-param="curriso"/>
+      </call-query>
+   </operation>
+   <operation name="mongo_orderItemsinsert_doc" returnRequestStatus="true">
+      <call-query href="mongo_orderItemsinsert_doc">
+         <with-param name="doc" query-param="doc"/>
+      </call-query>
+   </operation>
+   <operation name="mongo_orderItemsremove">
+      <call-query href="mongo_orderItemsremove">
+         <with-param name="id" query-param="id"/>
+      </call-query>
+   </operation>
+   <operation name="mongo_orderItemsupdate">
+      <call-query href="mongo_orderItemsupdate">
+         <with-param name="id" query-param="id"/>
+      </call-query>
+   </operation>
+   <operation name="mongo_orderItemsdrop">
+      <call-query href="mongo_orderItemsdrop"/>
+   </operation>
+   <operation name="mongo_orderItemsfind_byOrderid" returnRequestStatus="true">
+      <call-query href="mongo_orderItemsfind_byOrderid">
+         <with-param name="orderid" query-param="orderid"/>
+      </call-query>
+   </operation>
+   <operation name="mongo_insert" returnRequestStatus="true">
+      <call-query href="mongo_insert">
+         <with-param name="tourid" query-param="tourid"/>
+         <with-param name="username" query-param="username"/>
+         <with-param name="organization" query-param="organization"/>
+         <with-param name="queryType" query-param="queryType"/>
+         <with-param name="mission" query-param="mission"/>
+         <with-param name="order" query-param="order"/>
+         <with-param name="orderItem" query-param="orderItem"/>
+      </call-query>
+   </operation>
+   <operation name="mongo_orderItemsfind_byid">
+      <call-query href="mongo_orderItemsfind_byid">
+         <with-param name="id" query-param="id"/>
+      </call-query>
+   </operation>
+</data>
+
