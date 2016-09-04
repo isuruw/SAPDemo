@@ -1,0 +1,30 @@
+<body>
+   <p:mongo_orderItemsinsert xmlns:p="http://ws.wso2.org/dataservice">
+      <!--Exactly 1 occurrence-->
+      <xs:id xmlns:xs="http://ws.wso2.org/dataservice">2</xs:id>
+      <!--Exactly 1 occurrence-->
+      <xs:orderid xmlns:xs="http://ws.wso2.org/dataservice">1</xs:orderid>
+      <!--Exactly 1 occurrence-->
+      <xs:quantity xmlns:xs="http://ws.wso2.org/dataservice">5</xs:quantity>
+      <!--Exactly 1 occurrence-->
+      <xs:uomiso xmlns:xs="http://ws.wso2.org/dataservice">TNE</xs:uomiso>
+      <!--Exactly 1 occurrence-->
+      <xs:tacode xmlns:xs="http://ws.wso2.org/dataservice">0</xs:tacode>
+      <!--Exactly 1 occurrence-->
+      <xs:material xmlns:xs="http://ws.wso2.org/dataservice">STEEL</xs:material>
+      <!--Exactly 1 occurrence-->
+      <xs:condtype xmlns:xs="http://ws.wso2.org/dataservice">10</xs:condtype>
+      <!--Exactly 1 occurrence-->
+      <xs:amount xmlns:xs="http://ws.wso2.org/dataservice">4500</xs:amount>
+      <!--Exactly 1 occurrence-->
+      <xs:currency xmlns:xs="http://ws.wso2.org/dataservice">USD</xs:currency>
+      <!--Exactly 1 occurrence-->
+      <xs:curriso xmlns:xs="http://ws.wso2.org/dataservice">USD</xs:curriso>
+      <!--Exactly 1 occurrence-->
+      <xs:reason xmlns:xs="http://ws.wso2.org/dataservice">1</xs:reason>
+      <!--Exactly 1 occurrence-->
+      <xs:ordTimeStamp xmlns:xs="http://ws.wso2.org/dataservice">20170202T1130</xs:ordTimeStamp>
+      <!--Exactly 1 occurrence-->
+      <xs:ordTimeZone xmlns:xs="http://ws.wso2.org/dataservice">GMT</xs:ordTimeZone>
+   </p:mongo_orderItemsinsert>
+</body>
