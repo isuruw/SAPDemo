@@ -21,6 +21,8 @@
                             <sfdc:queryType__c>$3</sfdc:queryType__c>
                             <sfdc:mission__c>$4</sfdc:mission__c>
                             <sfdc:tourID__c>$5</sfdc:tourID__c>
+                            <sfdc:orderID__c>$7</sfdc:orderID__c>
+                            <sfdc:orderItem__c>$8</sfdc:orderItem__c>
                         </sfdc:sobject>
                     </sfdc:sobjects>
                 </format>
@@ -31,6 +33,8 @@
                     <arg evaluator="xml" expression="get-property('mission')"/>
                     <arg evaluator="xml" expression="get-property('tourID')"/>
                     <arg evaluator="xml" expression="fn:concat(get-property('organizationID'),'_',get-property('queryType'),'_',get-property('tourID'))"/>
+                    <arg evaluator="xml" expression="get-property('order')"/>
+                    <arg evaluator="xml" expression="get-property('orderItem')"/>
                 </args>
             </payloadFactory>
             <salesforce.create configKey="SFConfig">
