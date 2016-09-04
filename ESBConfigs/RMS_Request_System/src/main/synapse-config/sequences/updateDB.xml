@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sequence name="updateDB" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log level="full">
+        <property name="property_name" value="******************************SF Object Inserted**************"/>
+    </log>
+    <property description="sfID" expression="//s:result/s:id" name="sfId" scope="default" type="STRING" xmlns:s="urn:partner.soap.sforce.com"/>
     <payloadFactory description="insertRequestMsgToDB" media-type="xml">
         <format>
             <p:mongo_insert xmlns:p="http://ws.wso2.org/dataservice">
@@ -10,6 +14,7 @@
                 <xs:mission xmlns:xs="http://ws.wso2.org/dataservice">$5</xs:mission>
                 <xs:order xmlns:xs="http://ws.wso2.org/dataservice">$6</xs:order>
                 <xs:orderItem xmlns:xs="http://ws.wso2.org/dataservice">$7</xs:orderItem>
+                <xs:sfid xmlns:xs="http://ws.wso2.org/dataservice">$8</xs:sfid>
             </p:mongo_insert>
         </format>
         <args>
@@ -20,6 +25,7 @@
             <arg evaluator="xml" expression="get-property('mission')"/>
             <arg evaluator="xml" expression="get-property('order')"/>
             <arg evaluator="xml" expression="get-property('orderItem')"/>
+            <arg evaluator="xml" expression="fn:substring(get-property('sfId'),0,16)"/>
         </args>
     </payloadFactory>
     <call>

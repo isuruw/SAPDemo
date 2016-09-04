@@ -32,7 +32,7 @@
                         </MISSION_ID>
                     </_-DSD_-E1BPRAGENERALHD>
                     <_-DSD_-E1BPRAORDERHD2 SEGMENT="1">
-                        <VISIT_ID>0</VISIT_ID>
+                        <VISIT_ID>1</VISIT_ID>
                         <HH_ORDER>
                             <xsl:value-of select="//jsonObject/order"/>
                         </HH_ORDER>
@@ -54,7 +54,7 @@
                         </ORD_TIMEZONE>
                     </_-DSD_-E1BPRAORDERHD2>
                     <_-DSD_-E1BPRAORDERITM2 SEGMENT="1">
-                        <VISIT_ID>0</VISIT_ID>
+                        <VISIT_ID>1</VISIT_ID>
                         <HH_ORDER>
                             <xsl:value-of select="//jsonObject/order"/>
                         </HH_ORDER>
@@ -85,7 +85,7 @@
                         <SPEC_RETURN>0</SPEC_RETURN>
                     </_-DSD_-E1BPRAORDERITM2>
                     <_-DSD_-E1BPRAORDERCOND2 SEGMENT="1">
-                        <VISIT_ID>0</VISIT_ID>
+                        <VISIT_ID>1</VISIT_ID>
                         <HH_ORDER>
                             <xsl:value-of select="//jsonObject/order"/>
                         </HH_ORDER>

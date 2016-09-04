@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sequence name="reqSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
-    <filter description="" regex="created" source="//data/event/type">
+    <log level="full">
+        <property name="property_name" value="***** Object Event Received*********************************SF"/>
+    </log>
+    <filter description="" regex="deleted" source="//data/event/type">
         <then>
+            <property description="sfId" expression="//sobject/Id" name="sfId" scope="default" type="STRING"/>
+            <payloadFactory description="queryMSGDB" media-type="xml">
+                <format>
+                    <p:mongo_find_sfid xmlns:p="http://ws.wso2.org/dataservice">
+                        <xs:sfid xmlns:xs="http://ws.wso2.org/dataservice">$1</xs:sfid>
+                    </p:mongo_find_sfid>
+                </format>
+                <args>
+                    <arg evaluator="xml" expression="fn:substring(get-property('sfId'),0,16)"/>
+                </args>
+            </payloadFactory>
+            <call>
+                <endpoint key="DSEndpoint"/>
+            </call>
             <sequence key="setPropertyValues"/>
             <clone id="222" sequential="true">
                 <target>

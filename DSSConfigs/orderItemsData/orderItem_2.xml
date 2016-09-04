@@ -23,7 +23,7 @@
       <!--Exactly 1 occurrence-->
       <xs:reason xmlns:xs="http://ws.wso2.org/dataservice">1</xs:reason>
       <!--Exactly 1 occurrence-->
-      <xs:ordTimeStamp xmlns:xs="http://ws.wso2.org/dataservice">20170202T1130</xs:ordTimeStamp>
+      <xs:ordTimeStamp xmlns:xs="http://ws.wso2.org/dataservice">201702021130</xs:ordTimeStamp>
       <!--Exactly 1 occurrence-->
       <xs:ordTimeZone xmlns:xs="http://ws.wso2.org/dataservice">GMT</xs:ordTimeZone>
    </p:mongo_orderItemsinsert>

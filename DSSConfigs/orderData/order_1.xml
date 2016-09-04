@@ -3,13 +3,13 @@
       <!--Exactly 1 occurrence-->
       <xs:id xmlns:xs="http://ws.wso2.org/dataservice">1</xs:id>
       <!--Exactly 1 occurrence-->
-      <xs:timestamp xmlns:xs="http://ws.wso2.org/dataservice">20160902T1330</xs:timestamp>
+      <xs:timestamp xmlns:xs="http://ws.wso2.org/dataservice">201609021330</xs:timestamp>
       <!--Exactly 1 occurrence-->
       <xs:timezone xmlns:xs="http://ws.wso2.org/dataservice">GMT</xs:timezone>
       <!--Exactly 1 occurrence-->
       <xs:reason xmlns:xs="http://ws.wso2.org/dataservice">2</xs:reason>
       <!--Exactly 1 occurrence-->
-      <xs:ordTimeStamp xmlns:xs="http://ws.wso2.org/dataservice">20170202T1130</xs:ordTimeStamp>
+      <xs:ordTimeStamp xmlns:xs="http://ws.wso2.org/dataservice">201702021130</xs:ordTimeStamp>
       <!--Exactly 1 occurrence-->
       <xs:ordTimeZone xmlns:xs="http://ws.wso2.org/dataservice">GMT</xs:ordTimeZone>
    </p:mongo_ordersinsert>
