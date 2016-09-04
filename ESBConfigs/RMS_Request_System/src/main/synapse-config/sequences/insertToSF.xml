@@ -15,7 +15,7 @@
                 <format>
                     <sfdc:sobjects type="Request__c" xmlns:sfdc="sfdc">
                         <sfdc:sobject>
-                            <sfdc:Name>$5</sfdc:Name>
+                            <sfdc:Name>$6</sfdc:Name>
                             <sfdc:organization__c>$1</sfdc:organization__c>
                             <sfdc:username__c>$2</sfdc:username__c>
                             <sfdc:queryType__c>$3</sfdc:queryType__c>
@@ -30,6 +30,7 @@
                     <arg evaluator="xml" expression="get-property('queryType')"/>
                     <arg evaluator="xml" expression="get-property('mission')"/>
                     <arg evaluator="xml" expression="get-property('tourID')"/>
+                    <arg evaluator="xml" expression="fn:concat(get-property('organizationID'),'_',get-property('queryType'),'_',get-property('tourID'))"/>
                 </args>
             </payloadFactory>
             <salesforce.create configKey="SFConfig">
